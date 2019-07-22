@@ -32,8 +32,12 @@ class biggeeSpider(scrapy.Spider):
         for index,link in enumerate(response.css(ITEM_SELECTOR).extract()):
             logger.info("Parse Funtion Called on %s", link)
             # link = self.base_url + link
-            yield scrapy.Request(url=link, callback=self.parse_inner_pages)
+            page = current_url.split("=")[-1]
+            yield scrapy.Request(url=link, callback=self.parse_inner_pages,meta={'page_number' :page })
 
+        '/html/body/section[2]/div/div[5]/div[1]/div[12]/div/ul/li[3]/a'
+        '/html/body/section[2]/div/div[5]/div[1]/div[11]/div/ul/li[6]/a'
+        '/html/body/section[2]/div/div[5]/div[1]/div[9]/div/ul/li[6]/a'
         # if current_url == self.start_url:
         #     link = current_url + '/p2'
         #     yield scrapy.Request(url=link, callback=self.parse)
@@ -103,7 +107,7 @@ class biggeeSpider(scrapy.Spider):
         # latlong = None
 
         # latlong = response.xpath(LONG_SELECTOR).extract()
-        # page_number = response.meta.get('page_number')
+        page_number = response.meta.get('page_number')
         # progress = response.meta.get('progress')
 
         yield {
@@ -121,5 +125,5 @@ class biggeeSpider(scrapy.Spider):
                 'latlong' : latlong,
                 'contact_name' :  contact,
                 'tel'    : str(tel),
-                # 'page_number': page_number
+                'page_number': page_number,
         }
