@@ -96,8 +96,6 @@ class biggeeSpider(scrapy.Spider):
             latlong = None
 
 
-
-
         yield {
                 'name' : name  ,
                 'date': date,
