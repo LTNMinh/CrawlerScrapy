@@ -36,8 +36,8 @@ class reverSpider(scrapy.Spider):
 
         ITEM_SELECTOR = ".listing-name::attr(href)"
         PRICE_SELECTOR = ".listing-price::text"
-        PAGE_NEXT_1 = '/html/body/section[2]/div/div[5]/div[1]/div[12]/div/ul/li[3]/a/@href'
-        PAGE_NEXT_2 = 'li:nth-child(6) a::attr(href)'
+        # PAGE_NEXT_1 = '/html/body/section[2]/div/div[5]/div[1]/div[12]/div/ul/li[3]/a/@href'
+        # PAGE_NEXT_2 = 'li:nth-child(6) a::attr(href)'
 
         logger.info("Parse Funtion Called on %s", response.url)
         logger.info(response.css(ITEM_SELECTOR).extract())
