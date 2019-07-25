@@ -100,6 +100,7 @@ class reverSpider(scrapy.Spider):
         bedroom = dictionary.get('Phòng ngủ')
         bathroom = dictionary.get('Phòng tắm')
         area = dictionary.get('Diện tích')
+        use_area = dictionary.get('Diện tích')
         purpose = dictionary.get('Mục đích sử dụng')
         project = dictionary.get('Dự án')
         tower = dictionary.get('Tháp')
@@ -153,6 +154,7 @@ class reverSpider(scrapy.Spider):
                 'bedroom' : bedroom,
                 'bathroom' : bathroom,
                 'area' : area,
+                'use_area' : use_area,
                 'purpose' : purpose,
                 'project' : project,
                 'tower' : tower,
